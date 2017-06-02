@@ -10,17 +10,17 @@ import Foundation
 
 import UIKit
 
-class Handl_det: UITableViewCell {
+class Handl_det2: UITableViewCell {
     
-    @IBOutlet weak var txt_Info: UITextView!
-//    @IBOutlet weak var txt_Reg_Rub: UITextView!
-//    @IBOutlet weak var txt_Reg: UITextView!
-//    @IBOutlet weak var txt_Barometer_Rub: UITextView!
-//    @IBOutlet weak var txt_Barometer: UITextView!
+//    @IBOutlet weak var txt_Info: UITextView!
+    @IBOutlet weak var txt_Reg_Rub: UITextView!
+    @IBOutlet weak var txt_Reg: UITextView!
+    @IBOutlet weak var txt_Barometer_Rub: UITextView!
+    @IBOutlet weak var txt_Barometer: UITextView!
     
     override func awakeFromNib() {
         
-//        super.sizeToFit()
+        //        super.sizeToFit()
         super.awakeFromNib()
 //        txt_Info.contentMode = .scaleToFill
         // Initialization code

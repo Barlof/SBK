@@ -12,10 +12,12 @@ import UIKit
 class Handledning: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var TableView: UITableView!
+//    @IBOutlet weak var MainView: UIView!
     
     override func viewDidLoad() {
-       
         super.viewDidLoad()
+        
+//        TableView.contentMode = .scaleToFill
         self.TableView.reloadData()
     
     }
@@ -33,7 +35,8 @@ class Handledning: UIViewController, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
         let cell = TableView.dequeueReusableCell(withIdentifier: "HandlCell", for: indexPath) as! Handl_det
-        
+//        let cell2 = TableView.dequeueReusableCell(withIdentifier: "HandlCell2", for: indexPath) as! Handl_det2
+    
      
 // Configure the cell...
         return cell

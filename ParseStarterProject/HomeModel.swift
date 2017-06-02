@@ -130,6 +130,10 @@ class HomeModel: NSObject, URLSessionDataDelegate {
                 forare = (jsonElement[cnst_Forare] as? String)!
                 hund   = (jsonElement[cnst_Hund] as? String)!
                 pwd    = (jsonElement[cnst_Gren] as? String)!
+                plats  = (jsonElement[cnst_Plats] as? String)!
+                pickerDtaFo.append(" Förare?")
+                pickerDtaHu.append(" Hund?")
+                pickerDtaPlt.append(" Plats?")
             }
 
 // New Forare or Hund
@@ -137,6 +141,7 @@ class HomeModel: NSObject, URLSessionDataDelegate {
             {
                 ekipage.Namn     = forare
                 ekipage.Hund     = hund
+                ekipage.Plats    = plats
                 ekipage.Pwd      = pwd
                 ekipage.Kls0Po   = Kls0Po
                 ekipage.Kls1Po   = Kls1Po
@@ -151,11 +156,30 @@ class HomeModel: NSObject, URLSessionDataDelegate {
                 
 // Add to Array
                 Arr_Ekipages_lcl.append(ekipage)
-                
-                
+
+
+// Pickerviews
+// Forare
+                if pickerDtaFo.contains(forare) {
+                } else {
+                    pickerDtaFo.append(forare)
+                }
+// Hund
+                if pickerDtaHu.contains(hund) {
+                } else {
+                    pickerDtaHu.append(hund)
+                }
+// Plats
+                if pickerDtaPlt.contains(plats) {
+                } else {
+                    pickerDtaPlt.append(plats)
+                }
+
+            
 // Next record
                 forare     = (jsonElement[cnst_Forare] as? String)!
                 hund       = (jsonElement[cnst_Hund] as? String)!
+                plats      = (jsonElement[cnst_Plats] as? String)!
                 klass      = (jsonElement[cnst_Klass] as? String)!
                 pwd        = (jsonElement[cnst_Gren] as? String)!
                 
@@ -222,6 +246,7 @@ class HomeModel: NSObject, URLSessionDataDelegate {
                 let ekipage_last = Ekipage()
                 ekipage_last.Namn   = forare
                 ekipage_last.Hund   = hund
+                ekipage_last.Plats  = plats
                 ekipage_last.Pwd    = pwd
                 ekipage_last.Kls0Po = Kls0Po
                 ekipage_last.Kls0Di = Kls0Di
@@ -236,10 +261,26 @@ class HomeModel: NSObject, URLSessionDataDelegate {
                 Arr_Ekipages_lcl.append(ekipage_last)
                 HighScore = self.GetHighScore(Kls0Po, Kl1: Kls1Po, Kl2: Kls2Po, Kl3: Kls3Po)
                 HighDisc  = self.GetHighDisc(ekipage_last.TotDi)
+// Pickerviews
+// Forare
+                if pickerDtaFo.contains(forare) {
+                } else {
+                    pickerDtaFo.append((forare as? String!)!)
+                }
+// Hund
+                if pickerDtaHu.contains(hund) {
+                } else {
+                    pickerDtaHu.append(hund)
+                }
+// Plats
+                if pickerDtaPlt.contains(plats) {
+                } else {
+                    pickerDtaPlt.append(plats)
+                }
                 }
             }
         Arr_Ekipages = Arr_Ekipages_lcl
-
+/*
 // Prepare PickerViews if not prepared
             if (pickerDtaFo.count == 0 && pickerDtaHu.count == 0 && pickerDtaPlt.count == 0) {
 
@@ -279,7 +320,7 @@ class HomeModel: NSObject, URLSessionDataDelegate {
              
                     if plats != (jsonElement[cnst_Plats] as? String)! {
                         plats = (jsonElement[cnst_Plats] as? String)!
-                        if pickerDtaHu.contains((jsonElement[cnst_Plats] as? String)!) {
+                        if pickerDtaPlt.contains((jsonElement[cnst_Plats] as? String)!) {
                         } else {
                             pickerDtaPlt.append((jsonElement[cnst_Plats] as? String)!)
                         }
@@ -290,6 +331,10 @@ class HomeModel: NSObject, URLSessionDataDelegate {
                     self.delegate.itemsDownloaded(Arr_Ekipages as NSArray)
                 })
             }
+*/
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.delegate.itemsDownloaded(Arr_Ekipages as NSArray)
+        })
     }
     
     func GetHighScore(_ Kl0: Int, Kl1: Int, Kl2: Int, Kl3: Int) -> Int {
